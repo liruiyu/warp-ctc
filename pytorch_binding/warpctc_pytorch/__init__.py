@@ -44,7 +44,7 @@ class _CTC(Function):
             costs = costs / minibatch_size
 
         ctx.grads = grads
-        return costs
+        return costs.cuda() if is_cuda else costs
 
     @staticmethod
     def backward(ctx, grad_output):
